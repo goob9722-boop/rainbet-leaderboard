@@ -439,5 +439,70 @@ body {
 .kick-btn {
   border-color: #53fc18;
 }
+/* =======================================
+   BIG GLOWING SOCIAL BUTTON BAR
+   ======================================= */
+
+.social-bar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+  z-index: 9999;
+}
+
+.glow-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: 0.2s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.4);
+  backdrop-filter: blur(5px);
+}
+
+/* Icon inside button */
+.btn-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Rainbet button — purple glow */
+.rainbet-btn {
+  background: linear-gradient(45deg, #8300e9, #c200ff);
+  box-shadow: 0 0 22px #9f32ff;
+}
+.rainbet-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px #c200ff;
+}
+
+/* Kick button — Kick green */
+.kick-btn {
+  background: #53fc18;
+  color: black;
+  box-shadow: 0 0 22px #53fc18;
+}
+.kick-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px #74ff3c;
+}
+
+/* Discord button — blue glow */
+.discord-btn {
+  background: #5865f2;
+  box-shadow: 0 0 22px #5865f2;
+}
+.discord-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px #8b93ff;
+}
 
 
