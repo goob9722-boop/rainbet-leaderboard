@@ -6,6 +6,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CasinoLeaderboard apiUrl="http://localhost:4000/api/affiliates" />
+    <CasinoLeaderboard apiUrl="https://leaderboard-backend-3k6u.onrender.com/api/wagers" />
   </React.StrictMode>
 );
