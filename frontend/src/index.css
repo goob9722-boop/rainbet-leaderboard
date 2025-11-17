@@ -1,0 +1,399 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0b1020 0, #050816 45%, #02030a 100%);
+  color: #f9fafb;
+}
+
+/* -------------------------------------------------- */
+/* ANIMATED RAINBET GRADIENT BACKGROUND               */
+/* -------------------------------------------------- */
+
+.goobog-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    120deg,
+    #0a0e2a,
+    #1a1f46,
+    #2a2f66,
+    #4e3aa8,
+    #6a4df5
+  );
+  background-size: 400% 400%;
+  animation: rainbetGradient 18s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+@keyframes rainbetGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* INNER SHELL */
+.goobog-shell {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* HEADER */
+.goobog-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.goobog-logo {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.goobog-subtitle {
+  font-size: 1.2rem;
+  color: #9db0ff;
+  margin-top: 0.25rem;
+}
+
+/* TOP 3 SLOT CARDS CONTAINER */
+.goobog-top-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* SLOT MACHINE CARD */
+.goobog-slot-card {
+  position: relative;
+  width: 290px;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #111c3d, #0a122a);
+  border-radius: 18px;
+  border: 2px solid #1d2c5e;
+  box-shadow: 0 0 25px rgba(58, 123, 253, 0.25);
+  text-align: center;
+}
+
+/* GLOW */
+.goobog-slot-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: radial-gradient(circle, rgba(58, 123, 253, 0.35), transparent 70%);
+  z-index: -1;
+}
+
+/* RANK BADGE */
+.goobog-slot-rank {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #9db6ff;
+}
+
+/* AVATAR */
+.goobog-slot-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+  border: 3px solid #3e6bff;
+  background: #000;
+}
+
+.goobog-slot-avatar-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #3a7bff 0%, #1d3a75 100%);
+}
+
+/* LABELS */
+.goobog-slot-label {
+  font-size: 0.75rem;
+  color: #8fa4ff;
+  letter-spacing: 0.7px;
+  margin-bottom: 0.1rem;
+  display: block;
+}
+
+/* USERNAME REEL */
+.goobog-slot-username-reel {
+  margin-bottom: 1.2rem;
+}
+
+.goobog-slot-username-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* WAGER REEL */
+.goobog-slot-wager-reel {
+  margin-bottom: 1.2rem;
+}
+
+.goobog-slot-wager-amount {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* PRIZE */
+.goobog-slot-prize-amount {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #56f39a;
+}
+
+/* FIRST PLACE STYLING */
+.goobog-slot-card--first {
+  border-color: gold;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.55);
+}
+
+/* LIST BELOW TOP 3 */
+.goobog-list-wrap {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.goobog-list-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.goobog-list {
+  list-style: none;
+  width: 100%;
+}
+
+.goobog-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.goobog-list-rank {
+  font-weight: bold;
+}
+
+.goobog-list-wager {
+  color: #9ac8ff;
+  font-weight: 600;
+}
+
+/* FOOTER */
+.goobog-footer {
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.goobog-footer-line {
+  margin-bottom: 0.4rem;
+}
+/* ------------------------------------------ */
+/* BOUNCE ANIMATION FOR TOP SLOT CARDS       */
+/* ------------------------------------------ */
+
+@keyframes goobog-bounce {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-12px) scale(1.04); }
+  60% { transform: translateY(0) scale(1); }
+  75% { transform: translateY(-6px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Default bounce for all top cards */
+.goobog-slot-card {
+  animation: goobog-bounce 1.4s ease-out;
+}
+
+/* Stronger bounce for 1st place */
+.goobog-slot-card--first {
+  animation: goobog-bounce 1.7s ease-out;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 100, 0.5));
+}
+/* -------------------------------------------------- */
+/* LOOPING BOUNCE ANIMATION FOR TOP 3 CARDS           */
+/* -------------------------------------------------- */
+
+@keyframes goobog-bounce-loop {
+  0%   { transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-10px) scale(1.03); }
+  50%  { transform: translateY(0) scale(1); }
+  70%  { transform: translateY(-6px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* apply bounce animation on all top 3 cards */
+.goobog-slot-card {
+  animation: goobog-bounce-loop 3.2s ease-in-out infinite;
+}
+
+/* -------------------------------------------------- */
+/* 3D TILT HOVER EFFECT FOR SLOT CARDS                */
+/* -------------------------------------------------- */
+
+.goobog-slot-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+}
+
+.goobog-slot-card:hover {
+  transform: translateY(-10px) rotateX(8deg) rotateY(6deg) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35),
+              0 0 20px rgba(58, 123, 253, 0.4);
+}
+
+/* Stronger hover effect for 1st place card */
+.goobog-slot-card--first:hover {
+  transform: translateY(-14px) rotateX(10deg) rotateY(8deg) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5),
+              0 0 25px rgba(255, 215, 0, 0.7);
+}
+
+/* -------------------------------------------------- */
+/* NEON LIGHT BEAMS BEHIND THE LEADERBOARD            */
+/* -------------------------------------------------- */
+
+.goobog-bg::before,
+.goobog-bg::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 200, 255, 0.15),
+    rgba(170, 0, 255, 0.15),
+    rgba(0, 0, 0, 0)
+  );
+  transform: rotate(15deg);
+  animation: neonBeams 10s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.goobog-bg::after {
+  animation-duration: 14s;
+  transform: rotate(-25deg);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 0, 200, 0.12),
+    rgba(0, 240, 255, 0.12),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes neonBeams {
+  0% {
+    transform: translateX(-20%) rotate(15deg);
+  }
+  50% {
+    transform: translateX(20%) rotate(15deg);
+  }
+  100% {
+    transform: translateX(-20%) rotate(15deg);
+  }
+}
+
+/* Make sure content stays above beams */
+.goobog-shell {
+  position: relative;
+  z-index: 5;
+}
+/* -------------------------------------------------- */
+/* BIG MOVING SPOTLIGHT CIRCLES                       */
+/* -------------------------------------------------- */
+
+.goobog-bg::before,
+.goobog-bg::after,
+.goobog-bg .spotlight1,
+.goobog-bg .spotlight2 {
+  pointer-events: none;
+}
+
+.spotlight1,
+.spotlight2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  z-index: 1;
+  animation: spotlightMove 18s ease-in-out infinite;
+}
+
+.spotlight1 {
+  background: rgba(0, 180, 255, 0.7);
+  top: -10%;
+  left: -15%;
+}
+
+.spotlight2 {
+  background: rgba(180, 0, 255, 0.7);
+  bottom: -10%;
+  right: -15%;
+  animation-duration: 24s;
+}
+
+@keyframes spotlightMove {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(30%, 20%) scale(1.2); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+/* -------------------------------------------------- */
+/* FLOATING GOOBLOGO ANIMATION                        */
+/* -------------------------------------------------- */
+
+.goobog-floating-logos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.goobog-float {
+  position: absolute;
+  width: 90px;
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(120vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+  }
+}
+
+
