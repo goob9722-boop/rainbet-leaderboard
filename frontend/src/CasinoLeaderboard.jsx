@@ -46,10 +46,8 @@ export default function CasinoLeaderboard({ apiUrl }) {
         .catch(() => setLoading(false));
     }
 
-    // Load immediately
     loadData();
 
-    // Refresh every 30 seconds
     const interval = setInterval(loadData, 3000);
     return () => clearInterval(interval);
   }, [apiUrl, start, end]);
@@ -59,7 +57,6 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
   return (
     <div className="goobog-bg">
-
       {/* Floating logos */}
       <div className="goobog-floating-logos">
         {[...Array(12)].map((_, i) => (
@@ -181,39 +178,35 @@ export default function CasinoLeaderboard({ apiUrl }) {
         )}
       </div>
 
-      {/* Floating Social Buttons */}
+      {/* Floating Social Buttons with icons */}
       <div className="floating-buttons">
-
-        {/* Rainbet */}
         <a
           href="https://rainbet.com?r=goobog"
           target="_blank"
+          rel="noreferrer"
           className="float-btn rainbet-btn"
         >
-          <img src="/rainbet.png" className="icon-img" />
+          <img src="/rainbet.png" alt="Rainbet" />
         </a>
 
-        {/* Discord */}
         <a
           href="https://discord.gg/hmTDzqdEkv"
           target="_blank"
+          rel="noreferrer"
           className="float-btn discord-btn"
         >
-          <img src="/discord.png" className="icon-img" />
+          <img src="/discord.png" alt="Discord" />
         </a>
 
-        {/* Kick */}
         <a
           href="https://kick.com/GoobOG"
           target="_blank"
+          rel="noreferrer"
           className="float-btn kick-btn"
         >
-          <img src="/kick.png" className="icon-img" />
+          <img src="/kick.png" alt="Kick" />
         </a>
-
       </div>
-
     </div>
   );
 }
-
