@@ -18,7 +18,8 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
   useEffect(() => {
     function loadData() {
-      fetch(`${apiUrl=https://leaderboard-backend-3k6u.onrender.com}?start_at=${start}&end_at=${end}`)
+     fetch(`${apiUrl}?start_at=${start}&end_at=${end}`)
+
         .then((res) => res.json())
         .then((data) => {
           const list = data.affiliates || data || [];
