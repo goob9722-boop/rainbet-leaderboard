@@ -10,9 +10,11 @@ export default function CasinoLeaderboard({ apiUrl }) {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fixed Date Range for Rainbet API
-  const start = "2025-08-01";
-  const end = "2025-12-01";
+  // Date range: start of month -> today
+  const today = new Date();
+  const formatDate = (d) => d.toISOString().split("T")[0];
+  const start = formatDate(new Date(today.getFullYear(), today.getMonth(), 1));
+  const end = formatDate(today);
 
   useEffect(() => {
     function loadData() {
@@ -44,10 +46,13 @@ export default function CasinoLeaderboard({ apiUrl }) {
         .catch(() => setLoading(false));
     }
 
+    // Load immediately
     loadData();
-    const interval = setInterval(loadData, 30000);
+
+    // Refresh every 30 seconds
+    const interval = setInterval(loadData, 3000);
     return () => clearInterval(interval);
-  }, [apiUrl]);
+  }, [apiUrl, start, end]);
 
   const topThree = rows.slice(0, 3);
   const others = rows.slice(3);
@@ -55,7 +60,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
   return (
     <div className="goobog-bg">
 
-      {/* FLOATING LOGOS */}
+      {/* Floating logos */}
       <div className="goobog-floating-logos">
         {[...Array(12)].map((_, i) => (
           <img
@@ -74,6 +79,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
       <div className="spotlight1"></div>
       <div className="spotlight2"></div>
 
+      {/* Sparkles */}
       {[...Array(25)].map((_, i) => (
         <div
           key={i}
@@ -113,33 +119,38 @@ export default function CasinoLeaderboard({ apiUrl }) {
                   }
                 >
                   <div className="goobog-slot-rank">#{index + 1}</div>
+
                   <div className="goobog-slot-avatar">
                     <div className="goobog-slot-avatar-inner" />
                   </div>
+
                   <div className="goobog-slot-username-reel">
                     <span className="goobog-slot-label">PLAYER</span>
                     <div className="goobog-slot-username-text">
                       {p.username}
                     </div>
                   </div>
+
                   <div className="goobog-slot-wager-reel">
                     <span className="goobog-slot-label">WAGERED</span>
                     <div className="goobog-slot-wager-amount">
                       {formatNumber(p.wagered_amount)}
                     </div>
                   </div>
+
                   <div className="goobog-slot-prize">
                     <span className="goobog-slot-label">EST. REWARD</span>
                     <div className="goobog-slot-prize-amount">
                       ${index === 0 ? "100" : index === 1 ? "60" : "40"}
                     </div>
                   </div>
+
                   <div className="goobog-slot-glow" />
                 </article>
               ))}
             </section>
 
-            {/* OTHERS LIST */}
+            {/* OTHERS */}
             {others.length > 0 && (
               <section className="goobog-list-wrap">
                 <h2 className="goobog-list-title">More High Rollers</h2>
@@ -157,6 +168,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
               </section>
             )}
 
+            {/* FOOTER */}
             <footer className="goobog-footer">
               <div className="goobog-footer-line">
                 Leaderboard period: <strong>{start} → {end}</strong>
@@ -169,37 +181,38 @@ export default function CasinoLeaderboard({ apiUrl }) {
         )}
       </div>
 
-      {/* GLOWING SOCIAL BUTTONS */}
-      <div className="social-bar">
+      {/* Floating Social Buttons */}
+      <div className="floating-buttons">
 
+        {/* Rainbet */}
         <a
-          className="glow-btn rainbet-btn"
           href="https://rainbet.com?r=goobog"
           target="_blank"
+          className="float-btn rainbet-btn"
         >
-          <img src="/rainbet-icon.png" className="btn-icon" />
-          Play on Rainbet
+          <img src="/rainbet.png" className="icon-img" />
         </a>
 
+        {/* Discord */}
         <a
-          className="glow-btn kick-btn"
-          href="https://kick.com/GoobOG"
-          target="_blank"
-        >
-          <img src="/kick-logo.png" className="btn-icon" />
-          Watch on Kick
-        </a>
-
-        <a
-          className="glow-btn discord-btn"
           href="https://discord.gg/hmTDzqdEkv"
           target="_blank"
+          className="float-btn discord-btn"
         >
-          <img src="/discord-icon.png" className="btn-icon" />
-          Join Discord
+          <img src="/discord.png" className="icon-img" />
+        </a>
+
+        {/* Kick */}
+        <a
+          href="https://kick.com/GoobOG"
+          target="_blank"
+          className="float-btn kick-btn"
+        >
+          <img src="/kick.png" className="icon-img" />
         </a>
 
       </div>
+
     </div>
   );
 }
