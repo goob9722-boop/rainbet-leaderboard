@@ -10,16 +10,13 @@ export default function CasinoLeaderboard({ apiUrl }) {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Date range: start of month -> today
-  const today = new Date();
-  const formatDate = (d) => d.toISOString().split("T")[0];
-  const start = formatDate(new Date(today.getFullYear(), today.getMonth(), 1));
-  const end = formatDate(today);
+  // Fixed Date Range for Rainbet API
+  const start = "2025-08-01";
+  const end = "2025-12-01";
 
   useEffect(() => {
     function loadData() {
-     fetch(`${apiUrl}?start_at=${start}&end_at=${end}`)
-
+      fetch(`${apiUrl}?start_at=${start}&end_at=${end}`)
         .then((res) => res.json())
         .then((data) => {
           const list = data.affiliates || data || [];
@@ -51,46 +48,45 @@ export default function CasinoLeaderboard({ apiUrl }) {
     loadData();
 
     // Refresh every 30 seconds
-    const interval = setInterval(loadData, 3000);
+    const interval = setInterval(loadData, 30000);
     return () => clearInterval(interval);
-  }, [apiUrl, start, end]);
+  }, [apiUrl]);
 
   const topThree = rows.slice(0, 3);
   const others = rows.slice(3);
 
   return (
     <div className="goobog-bg">
-{/* Floating logos */}
-<div className="goobog-floating-logos">
-  {[...Array(12)].map((_, i) => (
-    <img
-      key={i}
-      src="/goobfloat.png"
-      className="goobog-float"
-      style={{
-        left: Math.random() * 100 + "%",
-        animationDuration: 8 + Math.random() * 10 + "s",
-        animationDelay: Math.random() * 5 + "s",
-      }}
-    />
-  ))}
-</div>
+      {/* Floating logos */}
+      <div className="goobog-floating-logos">
+        {[...Array(12)].map((_, i) => (
+          <img
+            key={i}
+            src="/goobfloat.png"
+            className="goobog-float"
+            style={{
+              left: Math.random() * 100 + "%",
+              animationDuration: 8 + Math.random() * 10 + "s",
+              animationDelay: Math.random() * 5 + "s",
+            }}
+          />
+        ))}
+      </div>
 
-<div className="spotlight1"></div>
-<div className="spotlight2"></div>
+      <div className="spotlight1"></div>
+      <div className="spotlight2"></div>
 
-{/* generate sparkles */}
-{[...Array(25)].map((_, i) => (
-  <div
-    key={i}
-    className="sparkle"
-    style={{
-      top: Math.random() * 100 + "%",
-      left: Math.random() * 100 + "%",
-      animationDelay: Math.random() * 6 + "s",
-    }}
-  />
-))}
+      {[...Array(25)].map((_, i) => (
+        <div
+          key={i}
+          className="sparkle"
+          style={{
+            top: Math.random() * 100 + "%",
+            left: Math.random() * 100 + "%",
+            animationDelay: Math.random() * 6 + "s",
+          }}
+        />
+      ))}
 
       <div className="goobog-shell">
         <header className="goobog-header">
@@ -106,7 +102,6 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
         {!loading && rows.length > 0 && (
           <>
-            {/* TOP 3 SLOT CARDS */}
             <section className="goobog-top-row">
               {topThree.map((p, index) => (
                 <article
@@ -141,12 +136,13 @@ export default function CasinoLeaderboard({ apiUrl }) {
                   <div className="goobog-slot-prize">
                     <span className="goobog-slot-label">EST. REWARD</span>
                     <div className="goobog-slot-prize-amount">
-                      $
-                      {index === 0
-                        ? "100"
-                        : index === 1
-                        ? "60"
-                        : "40"}
+                      ${
+                        index === 0
+                          ? "100"
+                          : index === 1
+                          ? "60"
+                          : "40"
+                      }
                     </div>
                   </div>
 
@@ -155,7 +151,6 @@ export default function CasinoLeaderboard({ apiUrl }) {
               ))}
             </section>
 
-            {/* OTHERS LIST */}
             {others.length > 0 && (
               <section className="goobog-list-wrap">
                 <h2 className="goobog-list-title">More High Rollers</h2>
@@ -173,7 +168,6 @@ export default function CasinoLeaderboard({ apiUrl }) {
               </section>
             )}
 
-            {/* SIMPLE PERIOD INFO */}
             <footer className="goobog-footer">
               <div className="goobog-footer-line">
                 Leaderboard period: <strong>{start} → {end}</strong>
