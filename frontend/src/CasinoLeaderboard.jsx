@@ -44,10 +44,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
         .catch(() => setLoading(false));
     }
 
-    // Load immediately
     loadData();
-
-    // Refresh every 30 seconds
     const interval = setInterval(loadData, 30000);
     return () => clearInterval(interval);
   }, [apiUrl]);
@@ -136,13 +133,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
                   <div className="goobog-slot-prize">
                     <span className="goobog-slot-label">EST. REWARD</span>
                     <div className="goobog-slot-prize-amount">
-                      ${
-                        index === 0
-                          ? "100"
-                          : index === 1
-                          ? "60"
-                          : "40"
-                      }
+                      ${index === 0 ? "100" : index === 1 ? "60" : "40"}
                     </div>
                   </div>
 
@@ -178,6 +169,33 @@ export default function CasinoLeaderboard({ apiUrl }) {
             </footer>
           </>
         )}
+      </div>
+
+      {/* Floating Social Buttons */}
+      <div className="floating-buttons">
+        <a
+          href="https://rainbet.com?r=goobog"
+          target="_blank"
+          className="float-btn rainbet-btn"
+        >
+          🎰
+        </a>
+
+        <a
+          href="https://discord.gg/hmTDzqdEkv"
+          target="_blank"
+          className="float-btn discord-btn"
+        >
+          💬
+        </a>
+
+        <a
+          href="https://kick.com/GoobOG"
+          target="_blank"
+          className="float-btn kick-btn"
+        >
+          🎥
+        </a>
       </div>
     </div>
   );
