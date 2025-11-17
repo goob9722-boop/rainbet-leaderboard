@@ -10,7 +10,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Date range: start of month -> today
+  // Date range: start of month → today
   const today = new Date();
   const formatDate = (d) => d.toISOString().split("T")[0];
   const start = formatDate(new Date(today.getFullYear(), today.getMonth(), 1));
@@ -24,8 +24,8 @@ export default function CasinoLeaderboard({ apiUrl }) {
           const list = data.affiliates || data || [];
 
           const normalized = list.map((item) => ({
-            username: item.username || item.affiliate_id || "Unknown",
-            id: item.id || item.affiliate_id || "-",
+            username: item.username || "Unknown",
+            id: item.id || "-",
             wagered_amount:
               item.wagered_amount ||
               item.total_wager ||
@@ -47,8 +47,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
     }
 
     loadData();
-
-    const interval = setInterval(loadData, 3000);
+    const interval = setInterval(loadData, 30000);
     return () => clearInterval(interval);
   }, [apiUrl, start, end]);
 
@@ -57,6 +56,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
   return (
     <div className="goobog-bg">
+
       {/* Floating logos */}
       <div className="goobog-floating-logos">
         {[...Array(12)].map((_, i) => (
@@ -178,13 +178,13 @@ export default function CasinoLeaderboard({ apiUrl }) {
         )}
       </div>
 
-      {/* Floating Social Buttons with icons */}
+      {/* 🔥 Floating Social Buttons */}
       <div className="floating-buttons">
         <a
           href="https://rainbet.com?r=goobog"
           target="_blank"
           rel="noreferrer"
-          className="float-btn rainbet-btn"
+          className="float-btn float-rainbet"
         >
           <img src="/rainbet.png" alt="Rainbet" />
         </a>
@@ -193,7 +193,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
           href="https://discord.gg/hmTDzqdEkv"
           target="_blank"
           rel="noreferrer"
-          className="float-btn discord-btn"
+          className="float-btn float-discord"
         >
           <img src="/discord.png" alt="Discord" />
         </a>
@@ -202,7 +202,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
           href="https://kick.com/GoobOG"
           target="_blank"
           rel="noreferrer"
-          className="float-btn kick-btn"
+          className="float-btn float-kick"
         >
           <img src="/kick.png" alt="Kick" />
         </a>
