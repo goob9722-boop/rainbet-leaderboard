@@ -54,7 +54,8 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
   return (
     <div className="goobog-bg">
-      {/* Floating logos */}
+
+      {/* FLOATING LOGOS */}
       <div className="goobog-floating-logos">
         {[...Array(12)].map((_, i) => (
           <img
@@ -99,6 +100,7 @@ export default function CasinoLeaderboard({ apiUrl }) {
 
         {!loading && rows.length > 0 && (
           <>
+            {/* TOP 3 */}
             <section className="goobog-top-row">
               {topThree.map((p, index) => (
                 <article
@@ -111,37 +113,33 @@ export default function CasinoLeaderboard({ apiUrl }) {
                   }
                 >
                   <div className="goobog-slot-rank">#{index + 1}</div>
-
                   <div className="goobog-slot-avatar">
                     <div className="goobog-slot-avatar-inner" />
                   </div>
-
                   <div className="goobog-slot-username-reel">
                     <span className="goobog-slot-label">PLAYER</span>
                     <div className="goobog-slot-username-text">
                       {p.username}
                     </div>
                   </div>
-
                   <div className="goobog-slot-wager-reel">
                     <span className="goobog-slot-label">WAGERED</span>
                     <div className="goobog-slot-wager-amount">
                       {formatNumber(p.wagered_amount)}
                     </div>
                   </div>
-
                   <div className="goobog-slot-prize">
                     <span className="goobog-slot-label">EST. REWARD</span>
                     <div className="goobog-slot-prize-amount">
                       ${index === 0 ? "100" : index === 1 ? "60" : "40"}
                     </div>
                   </div>
-
                   <div className="goobog-slot-glow" />
                 </article>
               ))}
             </section>
 
+            {/* OTHERS LIST */}
             {others.length > 0 && (
               <section className="goobog-list-wrap">
                 <h2 className="goobog-list-title">More High Rollers</h2>
@@ -171,32 +169,38 @@ export default function CasinoLeaderboard({ apiUrl }) {
         )}
       </div>
 
-      {/* Floating Social Buttons */}
-      <div className="floating-buttons">
+      {/* GLOWING SOCIAL BUTTONS */}
+      <div className="social-bar">
+
         <a
+          className="glow-btn rainbet-btn"
           href="https://rainbet.com?r=goobog"
           target="_blank"
-          className="float-btn rainbet-btn"
         >
-          🎰
+          <img src="/rainbet-icon.png" className="btn-icon" />
+          Play on Rainbet
         </a>
 
         <a
-          href="https://discord.gg/hmTDzqdEkv"
-          target="_blank"
-          className="float-btn discord-btn"
-        >
-          💬
-        </a>
-
-        <a
+          className="glow-btn kick-btn"
           href="https://kick.com/GoobOG"
           target="_blank"
-          className="float-btn kick-btn"
         >
-          🎥
+          <img src="/kick-logo.png" className="btn-icon" />
+          Watch on Kick
         </a>
+
+        <a
+          className="glow-btn discord-btn"
+          href="https://discord.gg/hmTDzqdEkv"
+          target="_blank"
+        >
+          <img src="/discord-icon.png" className="btn-icon" />
+          Join Discord
+        </a>
+
       </div>
     </div>
   );
 }
+
